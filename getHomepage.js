@@ -13,7 +13,8 @@ var getHomepage = (function() {
   }
   
   return function(callback) {
-    if (typeof(window.home) === "function") {
+    // Opera will redirect the parent page to the homepage when window.home() is executed
+    if (typeof(window.home) === "function" && !window.opera) { 
       iframe.onload = function() {
         iframe.onload = function() {
           retrieveIframeLocation(callback);
@@ -22,9 +23,15 @@ var getHomepage = (function() {
       }
     } else {
       iframe.src = "about:home";
-      iframe.attachEvent("onload", function() {
-        retrieveIframeLocation(callback);
-      });
+      if (iframe.addEventListener) {
+        iframe.addEventListener("load", function() {
+          retrieveIframeLocation(callback);
+        }, false);
+      } else if (iframe.attachEvent) {
+        iframe.attachEvent("onload", function() {
+          retrieveIframeLocation(callback);
+        });
+      }
     }
     insertIframe();
   };
