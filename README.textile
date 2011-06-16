@@ -1,0 +1,10 @@
+h1. getHomepage
+
+Retrieves the user's home page. Useful for tracking purposes.
+Only works in Firefox and IE (yet).
+Also it only gives the homepage url when it's on the same domain.
+Means that _http://google.com/foo_ itself could check whether _http://google.com_ is set as homepage but not _http://yahoo.com_.
+
+h2. Example
+
+bc. getHomepage(function(url) { alert("Your homepage is: " + url); });
