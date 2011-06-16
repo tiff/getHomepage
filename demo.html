@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<title>Retrieve the user's home page</title>
+<style>
+  body {
+    font-family: "Comic Sans MS"; /* YES I'M SERIOUS! */
+  }
+</style>
+<script src="getHomepage.js"></script>
+<script>
+  getHomepage(function(url) {
+    alert("Your home page is: " + url);
+  });
+</script>
+
+<p>
+  <strong>Please note that this only returns the home page url when it's on the same domain.</strong><br>
+  In order to test that drag this link on your home page button in your browser's toolbar: <script>document.write('<a href="' + location.protocol + "//" + location.hostname + '">drag me<\/a>');</script>
+</p>
+<p>It only works in Internet Explorer and Firefox so far.</p>
+
+<p style="margin-top: 100px; font-size: 10px; color: #999;">Yes. This is Comic Sans.</p>
